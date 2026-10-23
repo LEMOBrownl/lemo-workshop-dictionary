@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#172e2a">
+  <meta name="description" content="Look up LEMO machine, packaging and spare-part terminology in German, English and French. Keep favourites and check the original reference.">
+  <title>LEMO · Workshop dictionary</title>
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to dictionary</a>
+  <aside class="sidebar">
+    <a class="brand" href="#" aria-label="Dictionary home"><span class="brand-symbol">L<span>·</span></span><span>LEMO<span class="brand-subtitle">WORKSHOP DICTIONARY</span></span></a>
+    <div class="sidebar-label">YOUR REFERENCE</div>
+    <nav aria-label="Main navigation">
+      <button class="nav-item active" data-view="dictionary"><span data-icon="book"></span><span>Dictionary</span><span class="nav-count" id="total-count">…</span></button>
+      <button class="nav-item" data-view="favourites"><span data-icon="star"></span><span>Favourites</span><span class="nav-count" id="favourite-count">0</span></button>
+      <button class="nav-item" data-view="sources"><span data-icon="layers"></span><span>Source pages</span><span class="nav-count">165</span></button>
+    </nav>
+    <div class="sidebar-bottom"><span class="language-dots"><b>DE</b><b>EN</b><b>FR</b></span><p>Made for the workshop.<br>Three languages. One place.</p><button class="quiet-light" id="open-backup"><span data-icon="download"></span> Backup & restore</button></div>
+  </aside>
+  <div class="workspace">
+    <header class="topbar"><span class="breadcrumb">Reference library <span>/</span> <strong id="breadcrumb-view">Dictionary</strong></span><span class="mobile-brand">LEMO <small>DICTIONARY</small></span><div class="top-actions"><span class="private-label"><i></i> Personal workspace</span><button class="button button-dark" id="add-term"><span data-icon="plus"></span><span>Add term</span></button></div></header>
+    <main id="main">
+      <section class="intro"><div><p class="eyebrow">GERMAN · ENGLISH · FRENCH</p><h1 id="view-title">Workshop dictionary<span>.</span></h1><p id="view-description">Find the right term. Keep the context. Get back to work.</p></div><div class="reference-stamp"><span data-icon="globe"></span><div><strong>One reference, three languages</strong><span>Machines · packaging · spare parts</span></div></div></section>
+      <section class="search-area" aria-label="Dictionary search"><div class="search-box"><span data-icon="search"></span><input id="search" type="search" placeholder="Search German, English or French…" aria-label="Search dictionary" autocomplete="off" spellcheck="false"><button id="clear-search" class="icon-button hidden" aria-label="Clear search"><span data-icon="x"></span></button><kbd>/</kbd></div><div class="suggestions" id="suggestions"><span>Try a term</span><button data-query="Blaskamm">Blaskamm <span>↗</span></button><button data-query="Schweißbalken">Schweißbalken <span>↗</span></button><button data-query="Tänzer">Tänzer <span>↗</span></button></div></section>
+      <div class="filterbar" id="dictionary-controls"><div class="filter-group"><label for="category">Category</label><select id="category"><option value="">All categories</option></select><label class="review-filter"><input type="checkbox" id="review-only"> Review scan</label></div><div class="language-control"><span>First language</span><div class="segmented" role="group" aria-label="First language"><button class="active" data-lang="de" aria-pressed="true">DE</button><button data-lang="en" aria-pressed="false">EN</button><button data-lang="fr" aria-pressed="false">FR</button></div></div></div>
+      <div class="results-toolbar"><div><strong id="result-count" aria-live="polite">Loading your reference…</strong><span id="result-extra"></span></div><button class="text-button" id="export-csv"><span data-icon="download"></span> Export results</button></div>
+      <section id="results" aria-label="Dictionary results"><div class="loading">Opening the dictionary…</div></section>
+      <div class="pagination" id="pagination"></div>
+      <div class="source-note"><span data-icon="info"></span><p>Imported from a scanned reference. Unchecked text may contain reading errors. <strong>Open a term to check its original page.</strong> An asterisk (*) marks an explanation in the source.</p></div>
+      <footer><span>LEMO technical reference</span><span id="footer-count">165 source pages · DE / EN / FR</span></footer>
+    </main>
+  </div>
+  <div class="drawer-overlay hidden" id="drawer-overlay"></div>
+  <aside class="detail-drawer hidden" id="detail-drawer" role="dialog" aria-modal="true" aria-label="Term details" tabindex="-1"></aside>
+  <dialog id="editor-dialog"><form id="editor-form"><div class="dialog-heading"><div><p class="eyebrow">YOUR WORKSHOP VOCABULARY</p><h2 id="editor-title">Add a term</h2></div><button type="button" class="icon-button" data-close-dialog="editor-dialog" aria-label="Close editor"><span data-icon="x"></span></button></div><p class="muted" id="editor-description">Add a term you use at work. It stays in this browser.</p><label>German<input name="de" autocomplete="off" placeholder="e.g. Schweißbalken" maxlength="600"></label><label>English<input name="en" autocomplete="off" placeholder="e.g. sealing bar" maxlength="600"></label><label>French<input name="fr" autocomplete="off" placeholder="e.g. barre de soudure" maxlength="600"></label><label>Category<select name="category"></select></label><label>Personal note<textarea name="note" rows="3" maxlength="4000" placeholder="Machine, customer or context…"></textarea></label><p id="editor-error" class="form-error" role="alert"></p><div class="dialog-actions"><button type="button" class="button button-outline" data-close-dialog="editor-dialog">Cancel</button><button class="button button-dark" type="submit">Save term</button></div></form></dialog>
+  <dialog id="source-dialog" class="source-dialog"><div class="source-dialog-head"><div><p class="eyebrow">ORIGINAL REFERENCE</p><h2 id="source-title">Source page</h2></div><div class="source-buttons"><button class="icon-button" id="previous-source" aria-label="Previous source page"><span data-icon="left"></span></button><button class="icon-button" id="next-source" aria-label="Next source page"><span data-icon="right"></span></button><button class="icon-button" data-close-dialog="source-dialog" aria-label="Close source page"><span data-icon="x"></span></button></div></div><div class="source-image-wrap"><img id="source-image" alt="Original scanned reference page"></div><p class="source-caption" id="source-caption"></p></dialog>
+  <dialog id="backup-dialog"><div class="dialog-heading"><div><p class="eyebrow">TAKE YOUR NOTES WITH YOU</p><h2>Backup & restore</h2></div><button class="icon-button" data-close-dialog="backup-dialog" aria-label="Close backup"><span data-icon="x"></span></button></div><p class="muted">Favourites, notes, personal edits and added terms are saved in this browser. They do not automatically sync between devices.</p><button class="backup-card" id="download-backup"><span data-icon="download"></span><span><strong>Download a backup</strong><small>Save all your personal dictionary data as JSON.</small></span><span>↗</span></button><label class="backup-card"><span data-icon="upload"></span><span><strong>Restore a backup</strong><small>Merge a previous backup into this browser.</small></span><input type="file" accept="application/json,.json" id="import-backup"><span>↗</span></label><p class="muted small">Export results creates a spreadsheet-friendly CSV of your current list. A backup also keeps your favourites and personal changes.</p></dialog>
+  <div id="toast" class="toast hidden" role="status"></div>
+  <nav class="mobile-nav" aria-label="Mobile navigation"><button data-view="dictionary" class="active"><span data-icon="book"></span>Dictionary</button><button data-view="favourites"><span data-icon="star"></span>Favourites</button><button data-view="sources"><span data-icon="layers"></span>Source pages</button><button id="mobile-backup"><span data-icon="download"></span>Backup</button></nav>
+</body>
+</html>
